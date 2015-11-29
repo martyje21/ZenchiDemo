@@ -1,0 +1,17 @@
+﻿
+@{
+    ViewBag.Title = "Zenchi";
+}
+
+<h2>Zenchi</h2>
+
+<div ng-app="ZenchiDemo">
+    <div ng-controller="projectController as pc">
+        <p>My Projects</p>
+        <ul>
+            <li ng-repeat="prj in pc.projects">
+                <span>{{prj.Name}}</span>-<span>{{prj.Description}}</span>
+            </li>
+        </ul>
+    </div>
+</div>

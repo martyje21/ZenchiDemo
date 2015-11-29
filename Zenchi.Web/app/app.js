@@ -1,0 +1,7 @@
+﻿(function () {
+    angular
+        .module('ZenchiDemo', [
+
+        ]);
+
+})();
