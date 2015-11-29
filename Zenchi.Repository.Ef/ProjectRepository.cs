@@ -15,7 +15,9 @@ namespace Zenchi.Repository.Ef
 
         public Project CreateProject(Project project)
         {
-            ProjectData newProject = Mapper.MapProject(project); 
+            ProjectData newProject = Mapper.MapProject(project);
+
+            newProject.ProjectId = Guid.NewGuid().ToString();
 
             using (var context = new ZenchiDBContext())
             {
@@ -31,7 +33,10 @@ namespace Zenchi.Repository.Ef
         {
             using (var context = new ZenchiDBContext())
             {
-                ProjectData dbItem = context.ProjectData.Find(projectId);
+                ProjectData dbItem = context.ProjectData
+                                     .Where(p => p.ProjectId == projectId)
+                                     .FirstOrDefault();
+
                 if (dbItem == null)
                     throw new KeyNotFoundException();
 
@@ -63,7 +68,10 @@ namespace Zenchi.Repository.Ef
         {
             using (var context = new ZenchiDBContext())
             {
-                ProjectData dbItem = context.ProjectData.Find(projectId);
+                ProjectData dbItem = context.ProjectData
+                                     .Where(p => p.ProjectId == projectId)
+                                     .FirstOrDefault();
+                                   
                 if (dbItem == null)
                     throw new KeyNotFoundException();
 
@@ -75,16 +83,20 @@ namespace Zenchi.Repository.Ef
         {
             using (var context = new ZenchiDBContext())
             {
-                ProjectData dbItem = context.ProjectData.Find(project.ProjectId);
-                
+                ProjectData dbItem = context.ProjectData
+                                     .Where(p => p.ProjectId == project.ProjectId)
+                                     .FirstOrDefault();
+
                 if (dbItem == null)
                     throw new KeyNotFoundException();
 
-                context.Set<ProjectData>().AddOrUpdate(Mapper.MapProject(project));
+                var updateItem = Mapper.MapProject(project);
+                updateItem.Id = dbItem.Id;
+
+                context.Set<ProjectData>().AddOrUpdate(updateItem);
                 context.SaveChanges();
 
-                dbItem = context.ProjectData.Find(project.ProjectId);
-                return Mapper.MapProject(dbItem);
+                return Mapper.MapProject(updateItem);
             }
         }
     }

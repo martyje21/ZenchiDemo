@@ -14,9 +14,9 @@ namespace Zenchi.Repository.Ef
         {
         }
 
-        public DbSet<ProjectData> ProjectData;
-        public DbSet<ProjectItemData> ProjectItemData;
-        public DbSet<ConfigurationData> ConfigurationData;
+        public DbSet<ProjectData> ProjectData { get; set; }
+        public DbSet<ProjectItemData> ProjectItemData { get; set; }
+        public DbSet<ConfigurationData> ConfigurationData { get; set; }
 
     }
 }

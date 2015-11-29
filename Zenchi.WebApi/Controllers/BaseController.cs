@@ -46,7 +46,8 @@ namespace Zenchi.WebApi.Controllers
             var response = new HttpResponseMessage()
             {
                 Content = new StringContent(_value),
-                RequestMessage = _request
+                RequestMessage = _request,
+                StatusCode = HttpStatusCode.InternalServerError
             };
             return Task.FromResult(response);
         }

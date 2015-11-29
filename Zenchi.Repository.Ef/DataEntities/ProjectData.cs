@@ -13,6 +13,10 @@ namespace Zenchi.Repository.Ef.DataEntities
     public class ProjectData
     {
         [Key]
+        public int Id { get; set; }
+
+        [Index("IX_ProjectId", 1, IsUnique= true)]
+        [StringLength(128)]
         public string ProjectId { get; set; }
 
         [StringLength(256)]

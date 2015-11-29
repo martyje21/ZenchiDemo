@@ -39,11 +39,12 @@ namespace Zenchi.WebApi.Controllers
         {
             try
             {
-                var project = ProjectService.GetProject(id);
-                if (project == null)
-                    return NotFound();
-
-                return Ok(project);
+                return Ok(ProjectService.GetProject(id));
+            }
+            catch (KeyNotFoundException ke)
+            {
+                LoggingService.LogException(ke, "Project not found for Id:" + id);
+                return NotFound();
             }
             catch (Exception ex)
             {
