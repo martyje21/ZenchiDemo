@@ -1,0 +1,17 @@
+﻿
+@{
+    ViewBag.Title = "Login";
+}
+
+<h2>Login</h2>
+
+<div style="color: red">
+    @ViewBag.Error
+</div>
+
+<form action="/auth/login" method="post">
+    Email: <input type="text" id="UserName" name="UserName"/>
+    Password: <input type="password" id="Password" name="Password" />
+    <input type="hidden" id="RedirectUrl" name="RedirectUrl" value="@ViewBag.RedirectUrl" />
+    <input type="submit" value="Login" />
+</form>

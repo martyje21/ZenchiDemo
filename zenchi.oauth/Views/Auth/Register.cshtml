@@ -1,0 +1,25 @@
+﻿
+@{
+    ViewBag.Title = "Register";
+}
+
+<h2>Register</h2>
+
+<form action="/auth/register" method="post">
+    <ul>
+        <li>
+            Email: <input type="text" id="UserName" name="UserName" />
+        </li>
+        <li>
+            Password: <input type="password" id="Password" name="Password" />
+        </li>
+        <li>
+            Confirm password: <input type="password" id="ConfirmPassword" name="ConfirmPassword" />
+        </li>
+        <li>
+            <input type="submit" value="Register" />
+        </li>
+    </ul>
+
+    <input type="hidden" value="@ViewBag.RedirectUrl" />
+</form>
