@@ -4,19 +4,21 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 
 namespace Zenchi.Repository.Ef.DataEntities
 {
+    [Table("Project")]
     public class ProjectData
     {
         [Key]
         public string ProjectId { get; set; }
 
-        [MaxLength(256)]
+        [StringLength(256)]
         public string Name { get; set; }
 
-        [MaxLength(512)]
+        [StringLength(512)]
         public string Description { get; set; }
     }
 }

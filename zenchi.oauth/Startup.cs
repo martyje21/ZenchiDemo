@@ -1,9 +1,11 @@
-﻿using Zenchi.OAuth.Providers;
+﻿using Zenchi.OAuth.DAL;
+using Zenchi.OAuth.Providers;
 using Microsoft.AspNet.Identity;
 using Microsoft.Owin;
 using Microsoft.Owin.Security.OAuth;
 using Owin;
 using System;
+using System.Configuration;
 
 [assembly: OwinStartup(typeof(Zenchi.OAuth.Startup))]
 namespace Zenchi.OAuth
@@ -19,12 +21,16 @@ namespace Zenchi.OAuth
 
         public void ConfigureOAuth(IAppBuilder app)
         {
+            app.CreatePerOwinContext(AuthContext.Create);
+            // The below line will be needed when email or text confirmation of registration is needed.
+            //app.CreatePerOwinContext<ApplicationUserManager>(ApplicationUserManager.Create);
+
             app.UseCookieAuthentication(new Microsoft.Owin.Security.Cookies.CookieAuthenticationOptions()
             {
                 AuthenticationType = DefaultAuthenticationTypes.ApplicationCookie,
                 AuthenticationMode = Microsoft.Owin.Security.AuthenticationMode.Active,
                 CookieName = "Zenchi.OAuth",
-                CookieDomain = ".martydev.com",
+                CookieDomain = ConfigurationManager.AppSettings["AuthCookieDomain"],
                 LoginPath = new PathString("/auth/login"),
                 LogoutPath = new PathString("/auth/logout")
             });
