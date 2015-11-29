@@ -12,6 +12,9 @@ namespace Zenchi.Repository.Ef
             Mapper.CreateMap<ConfigurationData, Configuration>();
             Mapper.CreateMap<ProjectData, Project>();
             Mapper.CreateMap<ProjectItemData, ProjectItem>();
+
+            Mapper.CreateMap<Project, ProjectData>();
+            Mapper.CreateMap<ProjectItemData, ProjectItem>();
         }
 
 
@@ -25,9 +28,19 @@ namespace Zenchi.Repository.Ef
             return Mapper.Map<Project>(projectData);
         }
 
+        public ProjectData MapProject(Project project)
+        {
+            return Mapper.Map<ProjectData>(project);
+        }
+
         public ProjectItem MapProjectItem(ProjectItemData projectItemData)
         {
             return Mapper.Map<ProjectItem>(projectItemData);
+        }
+
+        public ProjectItemData MapProjectItem(ProjectItem projectItem)
+        {
+            return Mapper.Map<ProjectItemData>(projectItem);
         }
 
     }

@@ -2,6 +2,7 @@
 using Zenchi.Domain.RepositoryInterfaces;
 using Zenchi.Domain.ServiceInterfaces;
 using Zenchi.Repository.Ef;
+using Zenchi.Services;
 using LightInject;
 using System;
 using System.IO;
@@ -35,8 +36,10 @@ namespace Zenchi
 
             //Register the Repositories.
             container.Register<IConfigurationRepository, ConfigurationRepository>(new PerContainerLifetime());
+            container.Register<IProjectRepository, ProjectRepository>(new PerContainerLifetime());
 
             //Register the services.
+            container.Register<IProjectService, ProjectService>(new PerContainerLifetime());
             
 
         }

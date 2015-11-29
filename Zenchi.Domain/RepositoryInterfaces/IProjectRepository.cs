@@ -9,6 +9,14 @@ namespace Zenchi.Domain.RepositoryInterfaces
 {
     public interface IProjectRepository
     {
-        List<Project> GetAllProjectsByUser();
+        List<Project> GetAllProjectsForUser();
+
+        Project GetProject(string projectId);
+
+        Project UpdateProject(Project project);
+
+        Project CreateProject(Project project);
+
+        void DeleteProject(string projectId);
     }
 }

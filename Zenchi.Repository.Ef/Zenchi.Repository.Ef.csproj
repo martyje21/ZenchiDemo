@@ -60,6 +60,7 @@
     <Compile Include="DataEntities\ProjectItemData.cs" />
     <Compile Include="MappingUtility.cs" />
     <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="ProjectRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ZenchiDBContext.cs" />
   </ItemGroup>
