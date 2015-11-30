@@ -2,6 +2,7 @@
 using Microsoft.Owin;
 using Microsoft.Owin.Security.Cookies;
 using Owin;
+using System.Configuration;
 
 [assembly: OwinStartup(typeof(Zenchi.Web.Startup))]
 namespace Zenchi.Web
@@ -15,7 +16,7 @@ namespace Zenchi.Web
                 AuthenticationType = DefaultAuthenticationTypes.ApplicationCookie,
                 AuthenticationMode = Microsoft.Owin.Security.AuthenticationMode.Active,
                 CookieName = "Zenchi.OAuth",
-                CookieDomain = ".martydev.com",
+                CookieDomain = ConfigurationManager.AppSettings["AuthCookieDomain"],
                 LoginPath = new PathString("/Home/Login")
             });
         }

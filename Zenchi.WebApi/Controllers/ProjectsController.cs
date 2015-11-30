@@ -21,6 +21,7 @@ namespace Zenchi.WebApi.Controllers
             ProjectService = projectService;
         }
 
+        [Authorize]
         // GET api/<controller>
         public IHttpActionResult Get()
         {

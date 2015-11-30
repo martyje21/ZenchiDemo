@@ -12,7 +12,7 @@
 
 
         function zenchiApiProjectUrl() {
-            return 'http://localhost:2454/api/projects';
+            return 'https://zenchiwebapi.martydev.com/api/projects';
         }
     }
 

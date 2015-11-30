@@ -18,7 +18,13 @@
 
 
         function getList() {
-            return $http.get(configService.zenchiApiProjectUrl())
+            var config = {
+                headers: {
+                    'Authorization': 'Bearer ' + userToken,
+                    'Accept': 'application/json'
+                }
+            };
+            return $http.get(configService.zenchiApiProjectUrl(), config)
                 .then(getAllComplete);
 
             function getAllComplete(response) {
